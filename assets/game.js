@@ -56,6 +56,7 @@ for (count = 0; count < word.length; count += 1) {
 
     var wins = 0;
     var lossCounter = 7;
+    var lockLetter = false;
 
 //when a key is clicked in the input field it does several things
 //the event is stored as a variable
@@ -68,17 +69,32 @@ document.onkeyup = function(event) {
     var letter = userGuess.toUpperCase();
     guessArray.push(letter);
 
+
+
+    // if (letter == guessArray[guessArray.length-1];){
+
+    //     var doubleGuess = letter;
+        
+    // }
+
+
 //a test is performed to see if the letter is even in the array of letters for the computer's word
 //this is tested by seeing if indexOf returns -1
 //if it doesn't return -1, that means it's in the word and scores a win & affirmations are given to user
 //or else it records a loss, which is a countdown from 7--the established number in the beginning & warnings are issued to user
 
-    if (wordArray.indexOf(guessArray[guessArray.length - 1]) != -1) {
+
+
+//I MUST ALSO TEST FOR LOCKED LETTERS SO THEY CAN'T BE RE-USED
+
+    if (wordArray.indexOf(guessArray[guessArray.length - 1]) != -1 && lockLetter != true) {
 
                 $("#start").html("You got somethin' right!!");
 
                 wins++;
                 goodGuess.push(letter);
+                
+                
 
                 //inside this condition we must see if we've reached maximum goodnes by comparing good guesses string to the word array indices
 
@@ -108,11 +124,13 @@ document.onkeyup = function(event) {
 
                         $("#start").html("Yer hanged, man!");
 
+
                         }
 
                     }
 
         lossTest();
+
 
     }
 
