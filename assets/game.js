@@ -41,60 +41,50 @@ for (count = 0; count < word.length; count += 1) {
     wordArray.push(word.charAt(count));
 
 
-    var letterHolder = $("<p>");
+    var letterBtn = $("<button>");
 
+        // I can only pretend to understand this part
+        letterBtn.addClass("letter-button letter letter-button-color");
 
-    letterHolder.addClass("placeholder")
+        // I hid the letters in CSS --- background and text color are the same
+        letterBtn.attr("data-letter", word[count]);
 
+        // someday I'd like to "reveal" each button with each accurate guess
+        letterBtn.text(word[count]);
 
-    letterHolder.text(wordArray[count]);
-
-
-    // $(".compGuess").append(" _ ");    ---->   if all else fails use this
-
-}
+        // I'd test a set of conditions then switch background of the button to white
+        $(".compGuess").append(letterBtn); 
 
     var wins = 0;
     var lossCounter = 7;
-    var lockLetter = false;
+}
+    //when a key is clicked in the input field it does several things
+    //the event is stored as a variable
+    //a new variable is created that makes it upper case
+    //each letter is pushed into a brand new array that holds all the guesses
 
-//when a key is clicked in the input field it does several things
-//the event is stored as a variable
-//a new variable is created that makes it upper case
-//each letter is pushed into a brand new array that holds all the guesses
-
-document.onkeyup = function(event) {
+    document.onkeyup = function(event) {
 
     var userGuess = event.key;
     var letter = userGuess.toUpperCase();
     guessArray.push(letter);
 
 
-
-    // if (letter == guessArray[guessArray.length-1];){
-
-    //     var doubleGuess = letter;
-        
-    // }
-
-
-//a test is performed to see if the letter is even in the array of letters for the computer's word
-//this is tested by seeing if indexOf returns -1
-//if it doesn't return -1, that means it's in the word and scores a win & affirmations are given to user
-//or else it records a loss, which is a countdown from 7--the established number in the beginning & warnings are issued to user
+    //a test is performed to see if the letter is even in the array of letters for the computer's word
+    //this is tested by seeing if indexOf returns -1
+    //if it doesn't return -1, that means it's in the word and scores a win & affirmations are given to user
+    //or else it records a loss, which is a countdown from 7--the established number in the beginning & warnings are issued to user
 
 
 
-//I MUST ALSO TEST FOR LOCKED LETTERS SO THEY CAN'T BE RE-USED
+    //I MUST ALSO TEST FOR LOCKED LETTERS SO THEY CAN'T BE RE-USED
 
-    if (wordArray.indexOf(guessArray[guessArray.length - 1]) != -1 && lockLetter != true) {
+    if (wordArray.indexOf(guessArray[guessArray.length - 1]) != -1) {
 
                 $("#start").html("You got somethin' right!!");
 
                 wins++;
                 goodGuess.push(letter);
-                
-                
 
                 //inside this condition we must see if we've reached maximum goodnes by comparing good guesses string to the word array indices
 
@@ -104,6 +94,10 @@ document.onkeyup = function(event) {
 
                         $("#start").html("You won!! Your word was " + word + ".");
 
+                        $(".letter-button-color").css("background-color", "white");
+
+
+
                         }
                     }
 
@@ -112,11 +106,11 @@ document.onkeyup = function(event) {
 
     if (wordArray.indexOf(guessArray[guessArray.length - 1]) == -1) {
 
-        $("#start").html("Yer one step closer to yer maker");
+        $("#start").html("Yer " + lossCounter + " steps from meetin'yer maker");
 
-     lossCounter--;
+        lossCounter--;
 
-//inside this condition we must see if we've reached maximum losses by comparing countDown number to 7, our starting point
+        //inside this condition we must see if we've reached maximum losses by comparing countDown number to 7, our starting point
 
                     function lossTest() {
 
@@ -125,11 +119,16 @@ document.onkeyup = function(event) {
                         $("#start").html("Yer hanged, man!");
 
 
+                        $(".letter-button-color").css("background-color", "white");
+
+
+
                         }
 
                     }
 
         lossTest();
+
 
 
     }

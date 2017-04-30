@@ -74,6 +74,22 @@ h1 {
 
 
 
+  .letter {
+    width: 30px;
+    height: 30px;
+    border-style: solid;
+    padding: 2px;
+   display:inline;
+    margin-left:3%;
+    margin-right: 3%;
+    margin-top: 2px;
+    margin-bottom: 8px;
+  }
+  
+  .letter-button-color {
+    color: darkcyan;
+    background-color: darkcyan;
+  }
 
 #start {
 
@@ -89,7 +105,7 @@ h1 {
 
 .placeholder{
 	position:absolute;
-	z-index: 2;
+	z-index: 1;
 	box-sizing: border-box;
 	height:30px;
 	width:30px;
@@ -106,15 +122,17 @@ h1 {
 	font-size: 20px;
 	z-index: 1;
 	bottom:84px;
-	left: 15%;
+	left: 10%;
 	display: inline;
 	background-color: #946d4f;
-	width: 530px;
+	width: 700px;
 	height: 100px;
 	border-style: groove;
 	border-color: white;
 	text-align: center;
 	padding-bottom: 10px;
 	padding-top: 0px;
+	
+	
 
 }
