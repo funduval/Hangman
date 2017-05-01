@@ -90,18 +90,24 @@ for (count = 0; count < word.length; count += 1) {
 
                 function winTest() {
 
-                        if (goodGuess.length === word.length) {
+                        if (goodGuess.length  == word.length ) {
 
                         $("#start").html("You won!! Your word was " + word + ".");
 
                         $(".letter-button-color").css("background-color", "white");
 
+                          setTimeout(function(){ document.location.reload(); }, 3000); 
+
 
 
                         }
+
+
+                      
                     }
 
                 winTest();
+                
     } 
 
     if (wordArray.indexOf(guessArray[guessArray.length - 1]) == -1) {
@@ -116,14 +122,17 @@ for (count = 0; count < word.length; count += 1) {
 
                         if (lossCounter == 0) {
 
-                        $("#start").html("Yer hanged, man!");
+                            $("#start").html("Yer hanged, man!");
 
 
-                        $(".letter-button-color").css("background-color", "white");
+                            $(".letter-button-color").css("background-color", "white");
 
 
-
+                                   setTimeout(function(){ document.location.reload(); }, 3000); 
                         }
+
+
+
 
                     }
 
@@ -131,9 +140,12 @@ for (count = 0; count < word.length; count += 1) {
 
 
 
+
     }
 
 }
+
+
 
 
     
